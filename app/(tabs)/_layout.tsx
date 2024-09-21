@@ -1,8 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
+import { icons } from "@/constants/icons";
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
@@ -11,24 +10,54 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#FFA001",
+        tabBarInactiveTintColor: "#CDCDE0",
+        tabBarStyle: {
+          backgroundColor: "#161622",
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84,
+        }
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon icon={icons.home} name="Home" focused={focused} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="create"
         options={{
-          title: 'Explore',
+          title: 'Create',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon icon={icons.plus} name="Create" focused={focused} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon icon={icons.profile} name="Profile" focused={focused} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="bookmarks"
+        options={{
+          title: 'Saved',
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon icon={icons.bookmark} name="Saved" focused={focused} color={color} />
           ),
         }}
       />
